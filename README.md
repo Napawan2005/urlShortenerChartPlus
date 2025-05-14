@@ -15,7 +15,7 @@
     * `-d` รัน service ใน background
 
 ### วิธีการใช้งาน (Usage)
- **สร้างด้วย MVN**
+ **สร้างด้วย MVN** 
 
    ```bash
    mvn clean package -DskipTests
@@ -65,7 +65,7 @@
 src/main/java/com/bam/urlshortenerchartplus
 ├─ UrlShortenerChartPlusApplication.java    # Entry point ของแอป
 ├─ controller/
-│   ├─ RediaUrlController.java              # Redirect API สำหรับ path พารามิเตอร์เดียว
+│   ├─ RedirectUrlController.java              # Redirect API สำหรับ path พารามิเตอร์เดียว
 │   └─ UrlController.java                   # REST API ชุด /api/v1
 ├─ model/
 │   ├─ UrlMapping.java                      # Entity mapping ไปยังตาราง url_shortener
@@ -92,11 +92,11 @@ src/main/java/com/bam/urlshortenerchartplus
 
 ### REST APIs
 
-| HTTP Method | Path              | คำอธิบาย                                                                               |
-| ----------- | ----------------- | -------------------------------------------------------------------------------------- |
-| GET         | `/api/v1`         | ทดสอบว่า service พร้อมใช้งาน (return "Hello World")                                    |
-| POST        | `/api/v1/shorten` | รับ JSON ของ `UrlMapping` (originalUrl, shortUrl) สร้างลิงก์ย่อ คืนข้อความลิงก์และเวลา |
-| GET         | `/{urlCode}`      | Redirect ไปยัง original URL ตาม `urlCode`                                              |
+| HTTP Method | Path              | คำอธิบาย                                                                                                                                                                                                                 |
+| ----------- | ----------------- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| GET         | `/api/v1`         | ทดสอบว่า service พร้อมใช้งาน (return "Hello World")                                                                                                                                                                      |
+| POST        | `/api/v1/shorten` | รับ JSON ของ `UrlMapping` (originalUrl, shortUrl) สร้างลิงก์ย่อ คืนข้อความลิงก์และเวลา <br/> โดยกรอกแค่<br/> - shortUrl : (ตามด้วย path ที่เราต้องการเปลี่ยน)<br/> - originalUrl : (url หรีอลิงค์ที่เราต้องการจะเปลี่ยน) |
+| GET         | `/{urlCode}`      | Redirect ไปยัง original URL ตาม `urlCode`                                                                                                                                                                                |
 
 ---
 
@@ -127,4 +127,4 @@ src/main/java/com/bam/urlshortenerchartplus
 
 ---
 
-*เอกสารนี้สรุปภาพรวมโครงสร้างและวิธีใช้งานของโปรเจกต์ url-shortener-chart-plus*
+*เอกสารนี้สรุปภาพรวมโครงสร้างและวิธีใช้งานของโปรเจกต์ `urlShortenerChartPlus`*
