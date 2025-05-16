@@ -1,7 +1,8 @@
 package com.bam.urlshortenerchartplus.controller;
 
-import com.bam.urlshortenerchartplus.model.UrlMapping;
+import com.bam.urlshortenerchartplus.dto.UrlResponse;
 import com.bam.urlshortenerchartplus.service.UrlService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,12 +23,23 @@ public class UrlController {
     }
 
     @PostMapping("/shorten")
-    public ResponseEntity<String> shortenUrl(@RequestBody UrlMapping urlMapping){
-        String  fullShortLink  = urlService.createShortUrl(
-                urlMapping.getOriginalUrl(),
-                urlMapping.getShortUrl());
-       return ResponseEntity.ok(fullShortLink );
+    public ResponseEntity<String> shortenUrl(@Valid @RequestBody UrlResponse request) {
+
+        if (request.getShortUrl() == null || request.getShortUrl().isBlank()) {
+            request.setShortUrl(urlService.randomString());
+        }
+
+
+        String fullShortLink = urlService.createShortUrl(
+                request.getOriginalUrl(),
+                request.getShortUrl()
+        );
+        urlService.saveUrl(request.getOriginalUrl(), request.getShortUrl());
+
+        return ResponseEntity.ok(fullShortLink);
     }
 
-
 }
+
+
+

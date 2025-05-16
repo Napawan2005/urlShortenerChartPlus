@@ -1,4 +1,4 @@
-package com.bam.urlshortenerchartplus.model;
+package com.bam.urlshortenerchartplus.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -7,12 +7,13 @@ import lombok.Setter;
 
 
 
+
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
 @Table(name = "url_shortener")
-public class UrlMapping {
+public class UrlEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
